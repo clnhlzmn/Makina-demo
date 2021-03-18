@@ -17,13 +17,14 @@ class App extends Component {
       <div>
         <h1>Tabs Demo</h1>
         <Tabs> 
-          <div label="Gator"> 
-            See ya later, <em>Alligator</em>! 
+          <div label="Input"> 
+            <textarea className="input" rows="80" 
+                      cols="80" id="aboutDescription"/>
           </div> 
-          <div label="Croc"> 
+          <div label="C Header"> 
             After 'while, <em>Crocodile</em>! 
           </div> 
-          <div label="Sarcosuchus"> 
+          <div label="C Implementation"> 
             Nothing to see here, this tab is <em>extinct</em>! 
           </div> 
         </Tabs> 

@@ -14,3 +14,15 @@
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
 }
+
+.input {
+  height:500px;
+  font-size:14pt;
+  font-family:monospace;
+  vertical-align: top;
+  max-height:100px;
+  min-height:100px;
+  resize: none;
+  font-weight: normal;
+  overflow-y: scroll;
+}
