@@ -1,4 +1,11 @@
-.tab-list {  border-bottom: 1px solid #ccc;
+h1 {
+  margin-left: 10px;
+}
+
+.tab-list {  
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid #ccc;
   padding-left: 0;
 }
 
@@ -15,14 +22,28 @@
   border-width: 1px 1px 0 1px;
 }
 
+.tab-content {
+  margin: 10px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
 .input {
   height:500px;
   font-size:14pt;
   font-family:monospace;
   vertical-align: top;
-  max-height:100px;
+  max-height:800px;
   min-height:100px;
+  width: 100%;
   resize: none;
   font-weight: normal;
   overflow-y: scroll;
+}
+
+.submit {
+  font-size: 14pt;
 }
