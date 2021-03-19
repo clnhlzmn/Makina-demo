@@ -2,12 +2,33 @@ import './App.css';
 import Tabs from "./components/Tabs"
 import React, { Component } from 'react';
 
+const defaultInput = 
+`machine oven;
+
+initial state closed {
+    on open -> open;
+    initial state idle {
+        on start -> cooking;
+    }
+    state cooking {
+        entry enable_heater;
+        on timeout -> idle;
+        exit disable_heater; 
+    }
+}
+
+state open {
+    on close -> closed;
+    on start error;
+}`
+
 class App extends Component {
     
     constructor(props) {
         super(props)
         this.onChange = this.onChange.bind(this)
         this.onClickCompile = this.onClickCompile.bind(this)
+        this.state = {input: defaultInput}
     }
     
     onChange(event) {
@@ -27,8 +48,9 @@ class App extends Component {
             if (responseText.startsWith("Exception")) {
                 this.setState({header: responseText, implementation: responseText})
             } else {
-                const header = responseText.split("***")[0]
-                const implementation = responseText.split("***")[1]
+                const splitResponse = responseText.split("***")
+                const header = splitResponse[0]
+                const implementation = splitResponse[1]
                 this.setState({header, implementation})
             }
         })
@@ -50,7 +72,7 @@ class App extends Component {
                             <textarea className="input" rows="80" 
                                     cols="80" id="aboutDescription" 
                                     onChange={this.onChange}
-                                    value={this.state?.input || ""}/>
+                                    value={this.state.input || defaultInput}/>
                         </div>
                         <button className="submit" 
                                 type="button"
