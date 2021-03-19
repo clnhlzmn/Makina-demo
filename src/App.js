@@ -28,8 +28,28 @@ class App extends Component {
         super(props)
         this.onChange = this.onChange.bind(this)
         this.onClickCompile = this.onClickCompile.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
         this.state = {input: defaultInput}
+        this.setTextInputRef = element => {
+            this.textInput = element;    
+        };
     }
+    
+    handleKeyDown(event) {
+        if (event.code === "Tab") { // tab was pressed
+            event.preventDefault();
+            var val = this.state.input,
+            start = event.target.selectionStart,
+            end = event.target.selectionEnd;
+            this.setState(
+                {
+                    "input": val.substring(0, start) + '    ' + val.substring(end)
+                },
+                () => {
+                    this.textInput.selectionStart = this.textInput.selectionEnd = start + 4
+                });
+        }
+   }
     
     onChange(event) {
         this.setState({input: event.target.value})
@@ -37,8 +57,6 @@ class App extends Component {
     
     onClickCompile(event) {
         const input = this.state?.input || ""
-        console.log(input)
-        
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
         // get a callback when the server responds
@@ -62,7 +80,6 @@ class App extends Component {
     }
     
     render() {
-        console.log("App.render")
         return (
             <div>
                 <h1>Makina Demo</h1>
@@ -73,6 +90,8 @@ class App extends Component {
                             <textarea className="input" rows="80" 
                                     cols="80" id="aboutDescription" 
                                     onChange={this.onChange}
+                                    onKeyDown={this.handleKeyDown}
+                                    ref={this.setTextInputRef}
                                     value={this.state.input || defaultInput}/>
                         </div>
                         <button className="submit" 
@@ -82,12 +101,14 @@ class App extends Component {
                     <div label="C Header"> 
                         <textarea className="input" rows="80" 
                                         cols="80" id="aboutDescription" 
-                                        value={this.state?.header || ""}/>
+                                        value={this.state?.header || ""}
+                                        readOnly/>
                     </div> 
                     <div label="C Implementation">
                         <textarea className="input" rows="80" 
                                         cols="80" id="aboutDescription"
-                                        value={this.state?.implementation || ""}/>
+                                        value={this.state?.implementation || ""}
+                                        readOnly/>
                     </div> 
                 </Tabs> 
             </div>

@@ -15,7 +15,6 @@ class Tab extends Component {
     }
   
     render() {
-        console.log("Tab.render")
         const {
             onClick,
             props: {

@@ -20,7 +20,6 @@ class Tabs extends Component {
     } 
     
     render() {
-        console.log("Tabs.render")
         const {
             onClickTabItem,
             props: {
