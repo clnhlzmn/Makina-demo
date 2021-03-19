@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Makina-demo/static/css/main.e1a29923.chunk.css",
-    "main.js": "/Makina-demo/static/js/main.c8b668dd.chunk.js",
-    "main.js.map": "/Makina-demo/static/js/main.c8b668dd.chunk.js.map",
+    "main.js": "/Makina-demo/static/js/main.c252c88a.chunk.js",
+    "main.js.map": "/Makina-demo/static/js/main.c252c88a.chunk.js.map",
     "runtime-main.js": "/Makina-demo/static/js/runtime-main.5328b7a3.js",
     "runtime-main.js.map": "/Makina-demo/static/js/runtime-main.5328b7a3.js.map",
     "static/js/2.62369903.chunk.js": "/Makina-demo/static/js/2.62369903.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.5328b7a3.js",
     "static/js/2.62369903.chunk.js",
     "static/css/main.e1a29923.chunk.css",
-    "static/js/main.c8b668dd.chunk.js"
+    "static/js/main.c252c88a.chunk.js"
   ]
 }
