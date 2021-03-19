@@ -66,6 +66,7 @@ class App extends Component {
         return (
             <div>
                 <h1>Makina Demo</h1>
+                <a href="https://github.com/clnhlzmn/makina">Readme</a>
                 <Tabs> 
                     <div label="Input"> 
                         <div className="input-container">
