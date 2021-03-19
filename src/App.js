@@ -15,7 +15,8 @@ class App extends Component {
     }
     
     onClickCompile(event) {
-        console.log(this.state?.input || "")
+        const input = this.state?.input || ""
+        console.log(input)
         
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
@@ -25,11 +26,10 @@ class App extends Component {
             console.log(xhr.responseText)
         })
         // open the request with the verb and the url
-        xhr.open('GET', 'http://localhost:8080')
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://localhost:8080")
+        xhr.open('POST', 'http://localhost:8080')
         xhr.setRequestHeader("Content-Type", "text/plain")
         // send the request
-        xhr.send(this.state?.input || "")
+        xhr.send(input)
     }
     
     render() {
