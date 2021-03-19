@@ -23,10 +23,17 @@ class App extends Component {
         // get a callback when the server responds
         xhr.addEventListener('load', () => {
             // update the state of the component with the result here
-            console.log(xhr.responseText)
+            const responseText = xhr.responseText
+            if (responseText.startsWith("Exception")) {
+                this.setState({header: responseText, implementation: responseText})
+            } else {
+                const header = responseText.split("***")[0]
+                const implementation = responseText.split("***")[1]
+                this.setState({header, implementation})
+            }
         })
         // open the request with the verb and the url
-        xhr.open('POST', 'http://localhost:8080')
+        xhr.open('POST', 'https://us-central1-makina-308118.cloudfunctions.net/MakinaCompile')
         xhr.setRequestHeader("Content-Type", "text/plain")
         // send the request
         xhr.send(input)
@@ -50,10 +57,14 @@ class App extends Component {
                                 onClick={this.onClickCompile}>Compile</button>
                     </div> 
                     <div label="C Header"> 
-                        After 'while, <em>Crocodile</em>! 
+                        <textarea className="input" rows="80" 
+                                        cols="80" id="aboutDescription" 
+                                        value={this.state?.header || ""}/>
                     </div> 
-                    <div label="C Implementation"> 
-                        Nothing to see here, this tab is <em>extinct</em>! 
+                    <div label="C Implementation">
+                        <textarea className="input" rows="80" 
+                                        cols="80" id="aboutDescription"
+                                        value={this.state?.implementation || ""}/>
                     </div> 
                 </Tabs> 
             </div>
